@@ -24,4 +24,10 @@ Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [Controller::class, 'Home'])->name('home');
+    Route::get('/anggota', [Controller::class, 'Anggota'])->name('anggota');
+    Route::get('/buku', [Controller::class, 'Buku'])->name('buku');
+    Route::get('/peminjaman', [Controller::class, 'Peminjaman'])->name('peminjaman');
+    Route::get('/pengembalian', [Controller::class, 'Pengembalian'])->name('pengembalian');
+    Route::get('/denda', [Controller::class, 'Denda'])->name('denda');
+    Route::get('/laporan', [Controller::class, 'Laporan'])->name('laporan');
 });
