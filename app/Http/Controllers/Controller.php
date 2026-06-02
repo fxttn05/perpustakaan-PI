@@ -37,4 +37,8 @@ class Controller extends BaseController
     public function Laporan(){
         return view('laporan.home');
     }
+
+    public function Profile(){
+        return view('profile.home');
+    }
 }

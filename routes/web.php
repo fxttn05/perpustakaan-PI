@@ -30,4 +30,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/pengembalian', [Controller::class, 'Pengembalian'])->name('pengembalian');
     Route::get('/denda', [Controller::class, 'Denda'])->name('denda');
     Route::get('/laporan', [Controller::class, 'Laporan'])->name('laporan');
+    Route::get('/profile', [Controller::class, 'Profile'])->name('profile');
 });
