@@ -48,12 +48,12 @@
                         <div class="flex space-x-4">
                             <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
                             <a href="/" aria-current="page" class="rounded-md bg-gray-950/50 px-3 py-2 text-sm font-medium text-white">Dashboard</a>
-                            <a href="/anggota" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Anggota</a>
-                            <a href="/buku" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Buku</a>
-                            <a href="/peminjaman" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Peminjaman</a>
-                            <a href="/pengembalian" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Pengembalian</a>
-                            <a href="/denda" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Denda</a>
-                            <a href="/laporan" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Laporan</a>
+                            <a href='{{route('anggota')}}' class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Anggota</a>
+                            <a href='{{route('buku')}}' class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Buku</a>
+                            <a href='{{route('peminjaman')}}' class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Peminjaman</a>
+                            <a href='{{route('pengembalian')}}' class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Pengembalian</a>
+                            <a href='{{route('denda')}}' class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Denda</a>
+                            <a href='{{route('laporan')}}' class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Laporan</a>
                         </div>
                     </div>
                 </div>
