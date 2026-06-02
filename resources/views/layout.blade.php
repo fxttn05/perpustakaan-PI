@@ -19,7 +19,7 @@
                     Perpustakaan SMK Taruna Bhakti
                 </div>
                 <div class="mr-3">
-                    <button type="button" class="text-white font-semibold bg-red-700 px-2 py-1 rounded-lgt">
+                    <button type="button" class="text-white font-semibold bg-red-700 px-3 py-1 rounded-lg">
                       Logout
                     </button>                  
                 </div>
@@ -45,15 +45,42 @@
 
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="hidden sm:block">
-                        <div class="flex space-x-4">
-                            <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-                            <a href="/" aria-current="page" class="rounded-md bg-gray-950/50 px-3 py-2 text-sm font-medium text-white">Dashboard</a>
-                            <a href='{{route('anggota')}}' class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Anggota</a>
-                            <a href='{{route('buku')}}' class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Buku</a>
-                            <a href='{{route('peminjaman')}}' class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Peminjaman</a>
-                            <a href='{{route('pengembalian')}}' class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Pengembalian</a>
-                            <a href='{{route('denda')}}' class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Denda</a>
-                            <a href='{{route('laporan')}}' class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Laporan</a>
+                        <div class="flex space-x-4">                   
+                            <a href="{{route('home')}}" aria-current="{{request()->routeIs('home') ? 'page' : 'false'}}"
+                               class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('home') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}"> 
+                                Dashboard
+                            </a>
+                        
+                            <a href="{{route('anggota')}}" aria-current="{{request()->routeIs('anggota') ? 'page' : 'false'}}"
+                               class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('anggota') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
+                                Anggota
+                            </a>
+                        
+                            <a href="{{route('buku')}}" aria-current="{{request()->routeIs('buku') ? 'page' : 'false'}}"
+                               class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('buku') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
+                                Buku
+                            </a>
+                        
+                            <a href="{{route('peminjaman')}}" aria-current="{{request()->routeIs('peminjaman') ? 'page' : 'false'}}"
+                               class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('peminjaman') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
+                                Peminjaman
+                            </a>
+                        
+                            <a href="{{route('pengembalian')}}" aria-current="{{request()->routeIs('pengembalian') ? 'page' : 'false'}}"
+                               class="rounded-md px-3 py-2 text-sm font-medium{{request()->routeIs('pengembalian') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
+                                Pengembalian
+                            </a>
+                        
+                            <a href="{{route('denda')}}" aria-current="{{request()->routeIs('denda') ? 'page' : 'false'}}"
+                               class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('denda') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
+                                Denda
+                            </a>
+                        
+                            <a href="{{route('laporan')}}" aria-current="{{request()->routeIs('laporan') ? 'page' : 'false'}}"
+                               class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('laporan') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
+                                Laporan
+                            </a>
+                        
                         </div>
                     </div>
                 </div>
@@ -71,12 +98,15 @@
             </div>
         </el-disclosure>
     </nav>
+
     <!--App Main-->
     <main class="app-main">
         @yield('content')
     </main>
+
     <footer class="app-footer text-black text-center py-2">
-        <p><a href="https://fattanportofolio.framer.website/" class="text-decoration-none text-black">SMK Taruna Bhakti Depok</a> | 2026</p>
+        <p><a href="https://smktarunabhakti.sch.id" class="text-decoration-none text-black">SMK Taruna Bhakti Depok</a> | 2026</p>
     </footer>
+
 </body>
 </html>
