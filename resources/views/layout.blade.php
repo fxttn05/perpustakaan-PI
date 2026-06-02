@@ -67,7 +67,7 @@
                             </a>
                         
                             <a href="{{route('pengembalian')}}" aria-current="{{request()->routeIs('pengembalian') ? 'page' : 'false'}}"
-                               class="rounded-md px-3 py-2 text-sm font-medium{{request()->routeIs('pengembalian') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
+                               class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('pengembalian') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
                                 Pengembalian
                             </a>
                         
@@ -79,6 +79,11 @@
                             <a href="{{route('laporan')}}" aria-current="{{request()->routeIs('laporan') ? 'page' : 'false'}}"
                                class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('laporan') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
                                 Laporan
+                            </a>
+                        
+                            <a href="{{route('profile')}}" aria-current="{{request()->routeIs('profile') ? 'page' : 'false'}}"
+                               class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('profile') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
+                                profile
                             </a>
                         
                         </div>

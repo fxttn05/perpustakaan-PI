@@ -6,10 +6,10 @@
         <!-- Header -->
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-slate-800">
-                Buku
+                Profile
             </h1>
             <p class="text-slate-500">
-                Selamat datang di sistem perpustakaan
+                Selamat datang, {{auth()->user()->name}} di sistem perpustakaan
             </p>
         </div>
 
@@ -196,4 +196,3 @@
     </script>
 </div>
 @endsection
-
