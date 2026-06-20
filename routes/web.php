@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -31,4 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/denda', [Controller::class, 'Denda'])->name('denda');
     Route::get('/laporan', [Controller::class, 'Laporan'])->name('laporan');
     Route::get('/profile', [Controller::class, 'Profile'])->name('profile');
+
+    Route::post('/anggota/store', [AnggotaController::class, 'store'])->name('anggota.store');
+    Route::put('/anggota/update/{id}', [AnggotaController::class, 'update'])->name('anggota.update');
+    Route::delete('/anggota/delete/{id}', [AnggotaController::class, 'destroy'])->name('anggota.delete');
 });
