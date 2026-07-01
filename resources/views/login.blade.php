@@ -105,6 +105,9 @@
 
                         </div>
                     </div>
+                    @error('error')
+                        <div class="text-white">{{ $message }}</div>
+                    @enderror
 
                     <!-- Button -->
                     <button
@@ -130,7 +133,7 @@
         </div>
 
     </div>
-
+    
 </body>
 
 </html>
