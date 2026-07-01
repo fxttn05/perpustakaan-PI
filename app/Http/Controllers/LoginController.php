@@ -19,6 +19,10 @@ class LoginController extends Controller
         if ($user) {
             Auth::login($user);
             return redirect('/');
+        } else {
+            return redirect()->back()->withErrors([
+                'error' => 'Email atau kata sandi yang anda masukkan salah. Coba lagi'
+            ]);
         }
     }
 
