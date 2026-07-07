@@ -24,6 +24,10 @@ class Controller extends BaseController
         return view('buku.home');
     }
 
+    public function Kategori (){
+        return view('kategori.home');
+    }
+
     public function Peminjaman(){
         return view('peminjaman.home');
     }

@@ -60,6 +60,11 @@
                                class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('buku') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
                                 Buku
                             </a>
+
+                            <a href="{{route('kategori')}}" aria-current="{{request()->routeIs('kategori') ? 'page' : 'false'}}"
+                               class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('kategori') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
+                                Kategori
+                            </a>
                         
                             <a href="{{route('peminjaman')}}" aria-current="{{request()->routeIs('peminjaman') ? 'page' : 'false'}}"
                                class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('peminjaman') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">

@@ -150,30 +150,12 @@ new class extends Component
 
                     <tr class="border-t">
 
-                        <td class="px-4 py-3">
-                            {{ $item->kode_anggota }}
-                        </td>
-
-                        <td class="px-4 py-3">
-                            {{ $item->nama_lengkap }}
-                        </td>
-
-                        <td class="px-4 py-3">
-                            {{ $item->kelas }}
-                        </td>
-
-                        <td class="px-4 py-3">
-                            {{ $item->jabatan }}
-                        </td>
-
-                        <td class="px-4 py-3">
-                            {{ $item->email }}
-                        </td>
-
-                        <td class="px-4 py-3">
-                            {{ $item->no_telp }}
-                        </td>
-                        
+                        <td class="px-4 py-3">{{ $item->kode_anggota }}</td>
+                        <td class="px-4 py-3">{{ $item->nama_lengkap }}</td>
+                        <td class="px-4 py-3">{{ $item->kelas }}</td>
+                        <td class="px-4 py-3">{{ $item->jabatan }}</td>
+                        <td class="px-4 py-3">{{ $item->email }}</td>
+                        <td class="px-4 py-3">{{ $item->no_telp }}</td>
                         <td class="px-4 py-3">
                             @if($item->status == 'Aktif')
                                 <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">
@@ -185,11 +167,8 @@ new class extends Component
                                 </span>
                             @endif
                         </td>
-
                         <td class="px-4 py-3">
-                            <button
-                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded"
-
+                            <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded"
                                 data-id="{{ $item->id }}"
                                 data-kode="{{ $item->kode_anggota }}"
                                 data-nama="{{ $item->nama_lengkap }}"
@@ -197,7 +176,6 @@ new class extends Component
                                 data-kelas="{{ $item->kelas }}"
                                 data-email="{{ $item->email }}"
                                 data-telp="{{ $item->no_telp }}"
-
                                 onclick="openEditModal(this)"
                             >
                                 Edit

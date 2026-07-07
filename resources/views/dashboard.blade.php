@@ -23,7 +23,7 @@
                             Total Buku
                         </p>
                         <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            0
+                            63
                         </h2>
                     </div>
 
@@ -47,7 +47,7 @@
                         </p>
 
                         <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            0
+                            23
                         </h2>
                     </div>
 
@@ -74,7 +74,7 @@
                         </p>
 
                         <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            0
+                            4
                         </h2>
                     </div>
 
@@ -101,7 +101,7 @@
                         </p>
 
                         <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            Rp0
+                            Rp30.560
                         </h2>
                     </div>
 

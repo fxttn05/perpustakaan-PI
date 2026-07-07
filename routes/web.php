@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [Controller::class, 'Home'])->name('home');
     Route::get('/anggota', [Controller::class, 'Anggota'])->name('anggota');
     Route::get('/buku', [Controller::class, 'Buku'])->name('buku');
+    Route::get('/kategori', [Controller::class, 'Kategori'])->name('kategori');
     Route::get('/peminjaman', [Controller::class, 'Peminjaman'])->name('peminjaman');
     Route::get('/pengembalian', [Controller::class, 'Pengembalian'])->name('pengembalian');
     Route::get('/denda', [Controller::class, 'Denda'])->name('denda');
@@ -36,4 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/anggota/store', [AnggotaController::class, 'store'])->name('anggota.store');
     Route::put('/anggota/update/{id}', [AnggotaController::class, 'update'])->name('anggota.update');
     Route::delete('/anggota/delete/{id}', [AnggotaController::class, 'destroy'])->name('anggota.delete');
+
+    Route::post('/kategori/store', [KategoriController::class, 'store'])->name('kategori.store');
+    Route::put('/kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+    Route::delete('/kategori/delete/{id}', [KategoriController::class, 'destroy'])->name('kategori.delete');
 });
