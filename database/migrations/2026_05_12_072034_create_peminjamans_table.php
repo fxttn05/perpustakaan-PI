@@ -15,11 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('id_peminjaman')->unique();
             $table->foreignId('anggota_id')->constrained('anggotas')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('buku_id')->constrained('bukus')->cascadeOnUpdate()->cascadeOnDelete();
             $table->date('tanggal_pinjam');
-            $table->date('tanggal_jatuh_tempo');
             $table->integer('durasi');
-            $table->enum('status', ['Dipinjam', 'Dikembalikan', 'Terlambat'])->default('Dipinjam');
+            $table->date('tanggal_jatuh_tempo');
+            $table->enum('status', ['Dipinjam','Selesai'])->default('Dipinjam');
             $table->text('keterangan')->nullable();
             $table->timestamps();
         });

@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pengembalians', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('peminjaman_id')->constrained('peminjamans')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->date('tanggal_kembali');
-            $table->integer('keterlambatan_hari')->default(0);
-            $table->enum('status', ['Tepat Waktu', 'Terlambat'])->default('Tepat Waktu');
-            $table->text('keterangan')->nullable();
-            $table->timestamps();
-        });
+        $table->id();
+        $table->foreignId('detail_peminjaman_id')->constrained('detail_peminjamans')->cascadeOnUpdate()->cascadeOnDelete();
+        $table->date('tanggal_kembali');
+        $table->integer('keterlambatan_hari')->default(0);
+        $table->enum('status', ['Tepat Waktu', 'Terlambat']);
+        $table->text('keterangan')->nullable();
+        $table->timestamps();
+    });
     }
 
     /**

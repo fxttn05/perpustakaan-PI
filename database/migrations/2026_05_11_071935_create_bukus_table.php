@@ -21,6 +21,7 @@ return new class extends Migration
             $table->year('tahun_terbit');
             $table->integer('jumlah_total')->default(0);
             $table->integer('jumlah_tersedia')->default(0);
+            $table->integer('jumlah_dipinjam')->default(0);
             $table->enum('status', ['Tersedia','Dipinjam','Tidak Aktif'])->default('Tersedia');
             $table->text('keterangan')->nullable();
             $table->foreignId('kategori_id')->constrained('kategoris')->cascadeOnUpdate()->cascadeOnDelete();
