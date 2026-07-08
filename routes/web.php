@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
@@ -42,4 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/kategori/store', [KategoriController::class, 'store'])->name('kategori.store');
     Route::put('/kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
     Route::delete('/kategori/delete/{id}', [KategoriController::class, 'destroy'])->name('kategori.delete');
+
+    Route::post('/buku', [BukuController::class, 'store'])->name('buku.store');
+    Route::put('/buku/update/{buku}', [BukuController::class, 'update'])->name('buku.update');
+    Route::delete('/buku/delete/{buku}', [BukuController::class, 'destroy'])->name('buku.destroy');
 });

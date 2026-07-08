@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anggota;
+use App\Models\Kategori;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -21,7 +22,8 @@ class Controller extends BaseController
     }
 
     public function Buku(){
-        return view('buku.home');
+        $kategori = Kategori::orderBy('nama_kategori')->get();
+        return view('buku.home', compact('kategori'));
     }
 
     public function Kategori (){
