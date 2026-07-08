@@ -3,13 +3,8 @@
 
         <!-- Header -->
         <div class="flex justify-between items-center border-b p-5">
-            <h2 class="text-xl font-semibold">
-                Form Tambah Anggota
-            </h2>
-
-            <button onclick="closeTambahModal()" class="bg-red-500 text-white px-4 py-2 rounded-lg">
-                Batal
-            </button>
+            <h2 class="text-xl font-semibold">Form Tambah Anggota</h2>
+            <button onclick="closeTambahModal()" class="bg-red-500 text-white px-4 py-2 rounded-lg">Batal</button>
         </div>
 
         <!-- Body -->
@@ -17,17 +12,17 @@
             @csrf
             <div class="grid grid-cols-2 gap-5 p-6">
                 <div>
-                    <label>Nama Lengkap</label>
+                    <label class="block mb-2">Nama Lengkap</label>
                     <input type="text" name="nama_lengkap" class="w-full border rounded-lg p-2">
                 </div>
 
                 <div>
-                    <label>Email</label>
+                    <label class="block mb-2">Email</label>
                     <input type="email" name="email" class="w-full border rounded-lg p-2">
                 </div>
 
                 <div>
-                    <label>Jabatan</label>
+                    <label class="block mb-2">Jabatan</label>
                     <select name="jabatan" class="w-full border rounded-lg p-2">
                         <option value="Siswa">Siswa</option>
                         <option value="Guru">Guru</option>
@@ -35,12 +30,12 @@
                 </div>
 
                 <div>
-                    <label>Kelas</label>
+                    <label class="block mb-2">Kelas</label>
                     <input type="text" name="kelas" class="w-full border rounded-lg p-2">
                 </div>
 
                 <div>
-                    <label>No Telepon</label>
+                    <label class="block mb-2">No Telepon</label>
                     <input type="text" name="no_telp" class="w-full border rounded-lg p-2">
                 </div>
 
