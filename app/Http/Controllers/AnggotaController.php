@@ -10,8 +10,8 @@ class AnggotaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_lengkap' => 'required',
-            'jabatan' => 'required',
+            'nama_lengkap'  => 'required',
+            'jabatan'       => 'required',
         ]);
 
         do {$kode = 'PTB-' . rand(100000, 999999);
@@ -26,12 +26,13 @@ class AnggotaController extends Controller
             'kelas' => $request->kelas,
             'email' => $request->email,
             'no_telp' => $request->no_telp,
+            'keterangan' => $request->keterangan,
             'status' => 'Aktif',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        return back()->with('success', 'Data berhasil dibuat');
+        return redirect()->route('anggota')->with('success', 'Data berhasil dibuat');
     }
 
     public function update(Request $request,$id) {
@@ -42,14 +43,15 @@ class AnggotaController extends Controller
             'kelas' => $request->kelas,
             'email' => $request->email,
             'no_telp' => $request->no_telp,
+            'keterangan' => $request->keterangan,
             'updated_at' => now(),
         ]);
-        return back()->with('success', 'Data berhasil diperbarui');
+        return redirect()->route('anggota')->with('success', 'Data berhasil diperbarui');
     }
 
     public function destroy($id)
     {
         Anggota::findOrFail($id)->delete();
-        return back()->with('success', 'Data berhasil dihapus');
+        return redirect()->route('anggota')->with('success', 'Data berhasil dihapus');
     }
 }

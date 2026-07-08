@@ -86,8 +86,10 @@
                 text: 'Cek kembali jika masih ragu',
                 icon: 'question',
                 showCancelButton: true,
-                confirmButtonText: 'Ya, sudah',
-                cancelButtonText: 'Cek lagi'
+                confirmButtonColor: '#16a34a',
+                cancelButtonColor: '#ef4444',
+                confirmButtonText: 'Ya, Simpan',
+                cancelButtonText: 'Cek Lagi'
             }).then((result) => {
                 if(result.isConfirmed){
                     document.getElementById(formId).submit();
@@ -100,10 +102,11 @@
             Swal.fire({
                 title: 'Hapus data?',
                 text: 'Data yang dihapus tidak dapat dikembalikan',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Ya, hapus',
-                cancelButtonText: 'Batal'
+                icon:'warning',
+                showCancelButton:true,
+                confirmButtonText:'Ya, Hapus',
+                cancelButtonText:'Batal',
+                confirmButtonColor:'#dc2626'
             }).then((result) => {
                 if(result.isConfirmed){
                     document.getElementById(`delete-${id}`).submit();
@@ -123,6 +126,16 @@ Swal.fire({
     icon: 'success',
     title: 'Berhasil',
     text: '{{ session("success") }}'
+});
+</script>
+@endif
+
+@if($errors->any())
+<script>
+Swal.fire({
+    icon:'error',
+    title:'Terjadi Kesalahan',
+    html:`{!! implode('<br>',$errors->all()) !!}`
 });
 </script>
 @endif

@@ -47,6 +47,11 @@
                     <label class="block mb-2">No Telepon</label>
                     <input type="text" id="edit_telp" name="no_telp" class="w-full border rounded-lg p-2">
                 </div>
+
+                <div class="col-span-2">
+                    <label class="block mb-2">Keterangan</label>
+                    <textarea id="edit_keterangan" name="keterangan" class="w-full border rounded-lg p-2" rows="3"></textarea>
+                </div>
             </div>
 
             <!-- Footer -->

@@ -46,6 +46,7 @@
             document.getElementById('edit_total').value = button.dataset.total;
             document.getElementById('edit_tersedia').value = button.dataset.tersedia;
             document.getElementById('edit_kategori').value = button.dataset.kategori;
+            document.getElementById('edit_keterangan').value = button.dataset.keterangan;
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
@@ -67,7 +68,7 @@
                 confirmButtonColor: '#16a34a',
                 cancelButtonColor: '#ef4444',
                 confirmButtonText: 'Ya, Simpan',
-                cancelButtonText: 'Periksa Lagi'
+                cancelButtonText: 'Cek Lagi'
             }).then((result)=>{
                 if(result.isConfirmed){
                     document.getElementById(formId).submit();
@@ -105,6 +106,16 @@ Swal.fire({
     text:'{{ session("success") }}',
     timer:1800,
     showConfirmButton:false
+});
+</script>
+@endif
+
+@if($errors->any())
+<script>
+Swal.fire({
+    icon:'error',
+    title:'Terjadi Kesalahan',
+    html:`{!! implode('<br>',$errors->all()) !!}`
 });
 </script>
 @endif

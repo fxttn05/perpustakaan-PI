@@ -98,7 +98,14 @@ new class extends Component {
                     <td class="px-4 py-3">{{ $item->deskripsi }}</td>
                     <td class="px-4 py-3">{{ $item->created_at->format('d M Y') }}</td>
                     <td class="px-4 py-3">
-                        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded" data-id="{{ $item->id }}" data-nama="{{ $item->nama_kategori }}" data-deskripsi="{{ $item->deskripsi }}" onclick="openEditModal(this)">Edit</button>
+                        <div class="flex gap-4">
+                            <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded" data-id="{{ $item->id }}" data-nama="{{ $item->nama_kategori }}" data-deskripsi="{{ $item->deskripsi }}" onclick="openEditModal(this)">
+                                Edit
+                            </button>
+                            <button onclick="deleteData({{$item->id}})" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">
+                                Hapus
+                            </button>
+                        </div>
                     </td>
                 </tr>
                 @empty

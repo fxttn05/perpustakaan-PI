@@ -59,6 +59,11 @@
                     <label class="block mb-2">Jumlah Tersedia *</label>
                     <input type="number" min="0" name="jumlah_tersedia" class="w-full border rounded-lg p-2" required>
                 </div>
+                
+                <div class="col-span-2">
+                    <label class="block mb-2">Keterangan</label>
+                    <textarea id="edit_keterangan" name="keterangan" class="w-full border rounded-lg p-2" rows="3"></textarea>
+                </div>
             </div>
 
             <!-- Footer -->

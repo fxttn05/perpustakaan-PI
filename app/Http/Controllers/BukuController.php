@@ -11,13 +11,12 @@ class BukuController extends Controller
     {
         $request->validate([
             'judul_buku'       => 'required|max:255',
-            'penulis'        => 'required|max:255',
+            'penulis'          => 'required|max:255',
             'penerbit'         => 'required|max:255',
-            'isbn'             => 'nullable|max:100',
             'tahun_terbit'     => 'required|digits:4',
-            'kategori_id'      => 'required|exists:kategoris,id',
+            'kategori_id'      => 'required',
             'jumlah_total'     => 'required|integer|min:1',
-            'jumlah_tersedia'  => 'required|integer|min:0'
+            'jumlah_tersedia'  => 'required|integer|min:0|lte:jumlah_total'
         ]);
 
         $last = Buku::latest()->first();
@@ -32,56 +31,51 @@ class BukuController extends Controller
         Buku::create([
             'kode_buku'         => $kode,
             'judul_buku'        => $request->judul_buku,
-            'penulis'         => $request->penulis,
+            'penulis'           => $request->penulis,
             'penerbit'          => $request->penerbit,
             'isbn'              => $request->isbn,
             'tahun_terbit'      => $request->tahun_terbit,
             'kategori_id'       => $request->kategori_id,
             'jumlah_total'      => $request->jumlah_total,
             'jumlah_tersedia'   => $request->jumlah_tersedia,
-            'status'            => $request->jumlah_tersedia == 0 ? 'Dipinjam' : 'Tersedia',
+            'status'            => 'Tersedia',
             'created_at'        => now(),
             'updated_at'        => now(),
         ]);
 
-        return redirect()->route('buku')->with('success', 'Data buku berhasil ditambahkan.');
+        return back()->with('success', 'Data buku berhasil ditambahkan.');
     }
 
     public function update(Request $request, Buku $buku)
     {
         $request->validate([
             'judul_buku'        => 'required|max:255',
-            'penulis'         => 'required|max:255',
+            'penulis'           => 'required|max:255',
             'penerbit'          => 'required|max:255',
-            'isbn'              => 'nullable|max:100',
             'tahun_terbit'      => 'required|digits:4',
-            'kategori_id'       => 'required|exists:kategoris,id',
+            'kategori_id'       => 'required|',
             'jumlah_total'      => 'required|integer|min:1',
-            'jumlah_tersedia'   => 'required|integer|min:0'
+            'jumlah_tersedia'   => 'required|integer|min:0|lte:jumlah_total'
         ]);
-        $status = 'Tersedia';
-        if ($request->jumlah_tersedia == 0) {
-            $status = 'Dipinjam';
-        }
         $buku->update([
             'judul_buku'        => $request->judul_buku,
-            'penulis'         => $request->penulis,
+            'penulis'           => $request->penulis,
             'penerbit'          => $request->penerbit,
             'isbn'              => $request->isbn,
             'tahun_terbit'      => $request->tahun_terbit,
             'kategori_id'       => $request->kategori_id,
             'jumlah_total'      => $request->jumlah_total,
             'jumlah_tersedia'   => $request->jumlah_tersedia,
-            'status'            => $status,
+            'status'            => $request->jumlah_tersedia < $request->jumlah_total ? 'Dipinjam' : 'Tersedia',
             'updated_at'        => now()
         ]);
-        return redirect()->route('buku')->with('success', 'Data buku berhasil diperbarui.');
+        return back()->with('success', 'Data buku berhasil diperbarui.');
     }
 
     public function destroy(Buku $buku)
     {
         $buku->delete();
-        return redirect()->route('buku')->with('success', 'Data buku berhasil dihapus.');
+        return back()->with('success', 'Data buku berhasil dihapus.');
 
     }
 }

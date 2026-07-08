@@ -18,7 +18,8 @@ class Buku extends Model
         'jumlah_total',
         'jumlah_tersedia',
         'status',
-        'kategori_id'
+        'kategori_id',
+        'keterangan'
     ];
 
     public function kategori()

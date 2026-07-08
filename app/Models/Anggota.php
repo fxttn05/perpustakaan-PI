@@ -17,6 +17,7 @@ class Anggota extends Model
         'kelas',
         'email',
         'no_telp',
-        'status'
+        'status',
+        'keterangan'
     ];
 }

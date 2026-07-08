@@ -39,6 +39,11 @@
                     <input type="text" name="no_telp" class="w-full border rounded-lg p-2">
                 </div>
 
+                <div>
+                    <label class="block mb-2">Keterangan</label>
+                    <textarea id="edit_keterangan" name="keterangan" class="w-full border rounded-lg p-2" rows="1"></textarea>
+                </div>
+
             </div>
 
             <!-- Footer -->

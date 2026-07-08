@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 class KategoriController extends Controller
 {
     public function store(Request $request){
+        $request->validate([
+            'nama_kategori'     => 'required|max:255',
+        ]);
         Kategori::create([
             'nama_kategori' => $request->nama_kategori,
             'deskripsi' => $request->deskripsi,
@@ -15,14 +18,14 @@ class KategoriController extends Controller
             'updated_at' => now()
         ]);
 
-        return back()->with(
-            'success',
-            'Kategori berhasil ditambahkan'
-        );
+        return redirect()->route('kategori')->with('success','Kategori berhasil ditambahkan');
     }
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nama_kategori'     => 'required|max:255',
+        ]);
         Kategori::findOrFail($id)
             ->update([
                 'nama_kategori' => $request->nama_kategori,
@@ -30,20 +33,13 @@ class KategoriController extends Controller
                 'updated_at' => now()
             ]);
 
-        return back()->with(
-            'success',
-            'Kategori berhasil diperbarui'
-        );
+        return redirect()->route('kategori')->with('success','Kategori berhasil diperbarui');
     }
 
     public function destroy($id)
     {
-        Kategori::findOrFail($id)
-            ->delete();
+        Kategori::findOrFail($id)->delete();
     
-        return back()->with(
-            'success',
-            'Kategori berhasil dihapus'
-        );
+        return redirect()->route('kategori')->with('success','Kategori berhasil dihapus');
     }
 }
