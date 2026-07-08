@@ -12,6 +12,15 @@ new class extends Component
     public ?string $sortDirection = null;
     public ?Buku $selectedBook = null;
 
+    public function mount()
+    {
+        if(session()->has('remember_book')){
+            $this->selectedBook = Buku::with('kategori')
+                ->where('kode_buku', session('remember_book'))
+                ->first();
+        }
+    }
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -172,7 +181,7 @@ new class extends Component
                                         {{ $item->penerbit }}
                                     </td>
                                     <td class="px-4 py-3 text-center">
-                                        <button wire:click="pilihBuku({{ $item->id }})" class="rounded-lg bg-slate-200 hover:bg-blue-500 hover:text-white p-2 transition" title="Lihat Detail">
+                                        <button wire:click="pilihBuku({{ $item->id }})" class="rounded-lg bg-slate-200 hover:bg-blue-500 hover:text-white p-2 transition" title="Lihat Detail" onclick="rememberBook({{ $item->id }})">
                                             👁
                                         </button>
                                     </td>
@@ -285,7 +294,7 @@ new class extends Component
 
                 <div class="mt-6">
                     <div class="flex gap-4">
-                        <button onclick="openEditModal(this)" data-id="{{ $selectedBook->id }}" data-kode="{{ $selectedBook->kode_buku }}" data-judul="{{ $selectedBook->judul_buku }}" data-penerbit="{{ $selectedBook->penerbit }}" data-penulis="{{ $selectedBook->penulis }}" data-isbn="{{ $selectedBook->isbn }}" data-tahun="{{ $selectedBook->tahun_terbit }}" data-total="{{ $selectedBook->jumlah_total }}" data-tersedia="{{ $selectedBook->jumlah_tersedia }}" data-kategori="{{ $selectedBook->kategori_id }}" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-lg">
+                        <button onclick="rememberBook({{ $selectedBook->id }}); openEditModal(this)" data-id="{{ $selectedBook->id }}" data-kode="{{ $selectedBook->kode_buku }}" data-judul="{{ $selectedBook->judul_buku }}" data-penerbit="{{ $selectedBook->penerbit }}" data-penulis="{{ $selectedBook->penulis }}" data-isbn="{{ $selectedBook->isbn }}" data-tahun="{{ $selectedBook->tahun_terbit }}" data-total="{{ $selectedBook->jumlah_total }}" data-tersedia="{{ $selectedBook->jumlah_tersedia }}" data-kategori="{{ $selectedBook->kategori_id }}" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-lg">
                             Edit Buku
                         </button>
                         <button onclick="deleteBook({{$selectedBook->id}})" class="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg">

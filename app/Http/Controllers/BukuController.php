@@ -28,7 +28,7 @@ class BukuController extends Controller
             $kode = 'TB-' . str_pad($angka, 4, '0', STR_PAD_LEFT);
         }
 
-        Buku::create([
+        $buku = Buku::create([
             'kode_buku'         => $kode,
             'judul_buku'        => $request->judul_buku,
             'penulis'           => $request->penulis,
@@ -43,7 +43,7 @@ class BukuController extends Controller
             'updated_at'        => now(),
         ]);
 
-        return back()->with('success', 'Data buku berhasil ditambahkan.');
+        return back()->with('remember_book', $buku->kode_buku)->with('success', 'Data buku berhasil ditambahkan.');
     }
 
     public function update(Request $request, Buku $buku)
@@ -69,7 +69,7 @@ class BukuController extends Controller
             'status'            => $request->jumlah_tersedia < $request->jumlah_total ? 'Dipinjam' : 'Tersedia',
             'updated_at'        => now()
         ]);
-        return back()->with('success', 'Data buku berhasil diperbarui.');
+        return back()->with('remember_book', $buku->kode_buku)->with('success', 'Data buku berhasil diperbarui.');
     }
 
     public function destroy(Buku $buku)

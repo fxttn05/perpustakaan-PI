@@ -20,6 +20,15 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        document.addEventListener('livewire:init', () => {
+            const id = localStorage.getItem('selectedBook');
+            if (!id) return;
+
+            setTimeout(() => {
+                const btn = document.querySelector(`[data-book="${id}"]`);
+                if (btn) btn.click();
+            }, 100);
+        });
         function openTambahModal(){
             const modal = document.getElementById('tambahModal');
             modal.classList.remove('hidden');
@@ -92,7 +101,17 @@
                 }
             });
         }
+
+        function rememberBook(id){
+            localStorage.setItem('selectedBook', id);
+        }
     </script>
+        
+    @if(session('selectedBook'))
+    <script>
+        localStorage.setItem('selectedBook', "{{ session('selectedBook') }}");
+    </script>
+    @endif
 </div>
 
 @include('buku.modal-tambah')
