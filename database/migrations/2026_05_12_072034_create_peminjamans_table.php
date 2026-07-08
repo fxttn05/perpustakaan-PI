@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('tanggal_jatuh_tempo');
             $table->integer('durasi');
             $table->enum('status', ['Dipinjam', 'Dikembalikan', 'Terlambat'])->default('Dipinjam');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

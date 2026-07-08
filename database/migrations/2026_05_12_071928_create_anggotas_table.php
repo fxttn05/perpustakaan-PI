@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->nullable()->unique();
             $table->string('no_telp')->nullable();
             $table->enum('status', ['Aktif', 'Nonaktif'])->default('Aktif');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

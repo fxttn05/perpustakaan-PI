@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('peminjaman_id')->constrained('peminjamans')->cascadeOnUpdate()->cascadeOnDelete();
             $table->decimal('jumlah_denda', 10, 2)->default(0);
             $table->enum('status_bayar', ['Belum Dibayar', 'Sudah Dibayar'])->default('Belum Dibayar');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

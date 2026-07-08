@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('jumlah_total')->default(0);
             $table->integer('jumlah_tersedia')->default(0);
             $table->enum('status', ['Tersedia','Dipinjam','Tidak Aktif'])->default('Tersedia');
+            $table->text('keterangan')->nullable();
             $table->foreignId('kategori_id')->constrained('kategoris')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });

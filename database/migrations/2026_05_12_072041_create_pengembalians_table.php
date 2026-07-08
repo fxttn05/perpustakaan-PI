@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('tanggal_kembali');
             $table->integer('keterlambatan_hari')->default(0);
             $table->enum('status', ['Tepat Waktu', 'Terlambat'])->default('Tepat Waktu');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }
