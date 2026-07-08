@@ -43,23 +43,10 @@ new class extends Component
 
         if ($this->search) {
             $query->where(function ($q) {
-                $q->where(
-                    'kode_anggota',
-                    'like',
-                    "%{$this->search}%"
-                )->orWhere(
-                    'nama_lengkap',
-                    'like',
-                    "%{$this->search}%"
-                )->orWhere(
-                    'kelas',
-                    'like',
-                    "%{$this->search}%"
-                )->orWhere(
-                    'no_telp',
-                    'like',
-                    "%{$this->search}%"
-                );
+                $q->where('kode_anggota','like',"%{$this->search}%")
+                ->orWhere('nama_lengkap','like',"%{$this->search}%")
+                ->orWhere('kelas','like',"%{$this->search}%")
+                ->orWhere('no_telp','like',"%{$this->search}%");
             });
         }
 
@@ -72,7 +59,7 @@ new class extends Component
             $query->latest();
         }
         return [
-            'anggota' => $query->paginate(30)
+            'anggota' => $query->paginate(25)
         ];
     }
 };
@@ -80,11 +67,10 @@ new class extends Component
 
 <div>
     <div class="flex justify-between items-center mb-6">
-            <button onclick="openTambahModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg">
-                + Tambah Anggota
-            </button>
-
-            <input wire:model.live.debounce.500ms="search" type="text" placeholder="Cari kode, nama, kelas atau no telp..." class="border rounded-lg px-4 py-2 w-96">
+        <button onclick="openTambahModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg">
+            + Tambah Anggota
+        </button>
+        <input wire:model.live.debounce.500ms="search" type="text" placeholder="Cari kode, nama, kelas atau no telp..." class="border rounded-lg px-4 py-2 w-96">
     </div>
 
     <div class="bg-white rounded-xl shadow overflow-x-auto">
@@ -101,10 +87,7 @@ new class extends Component
                             ↓
                         @endif
                     </th>
-
-                    <th
-                        wire:click="sort('nama_lengkap')"
-                        class="cursor-pointer px-4 py-3">
+                    <th wire:click="sort('nama_lengkap')" class="cursor-pointer px-4 py-3">
                         Nama
                         @if($sortField !== 'nama_lengkap')
                             ↕
@@ -115,41 +98,18 @@ new class extends Component
                         @endif
 
                     </th>
-
-                    <th class="px-4 py-3">
-                        Kelas
-                    </th>
-
-                    <th class="px-4 py-3">
-                        Jabatan
-                    </th>
-
-                    <th class="px-4 py-3">
-                        Email
-                    </th>
-
-                    <th class="px-4 py-3">
-                        No Telp
-                    </th>
-
-                    <th class="px-4 py-3">
-                        Status
-                    </th>
-
-                    <th class="px-4 py-3">
-                        Aksi
-                    </th>
-
+                    <th class="px-4 py-3">Kelas</th>
+                    <th class="px-4 py-3">Jabatan</th>
+                    <th class="px-4 py-3">Email</th>
+                    <th class="px-4 py-3">No Telp</th>
+                    <th class="px-4 py-3">Status</th>
+                    <th class="px-4 py-3">Aksi</th>
                 </tr>
-
             </thead>
 
             <tbody>
-
                 @forelse($anggota as $item)
-
                     <tr class="border-t">
-
                         <td class="px-4 py-3">{{ $item->kode_anggota }}</td>
                         <td class="px-4 py-3">{{ $item->nama_lengkap }}</td>
                         <td class="px-4 py-3">{{ $item->kelas }}</td>
@@ -168,44 +128,21 @@ new class extends Component
                             @endif
                         </td>
                         <td class="px-4 py-3">
-                            <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded"
-                                data-id="{{ $item->id }}"
-                                data-kode="{{ $item->kode_anggota }}"
-                                data-nama="{{ $item->nama_lengkap }}"
-                                data-jabatan="{{ $item->jabatan }}"
-                                data-kelas="{{ $item->kelas }}"
-                                data-email="{{ $item->email }}"
-                                data-telp="{{ $item->no_telp }}"
-                                onclick="openEditModal(this)"
-                            >
+                            <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded" data-id="{{ $item->id }}" data-kode="{{ $item->kode_anggota }}" data-nama="{{ $item->nama_lengkap }}" data-jabatan="{{ $item->jabatan }}" data-kelas="{{ $item->kelas }}" data-email="{{ $item->email }}" data-telp="{{ $item->no_telp }}" onclick="openEditModal(this)">
                                 Edit
                             </button>
                         </td>
-
                     </tr>
-
                 @empty
-
                     <tr>
-
-                        <td
-                            colspan="7"
-                            class="text-center py-10 text-slate-500">
-
+                        <td colspan="7" class="text-center py-10 text-slate-500">
                             Belum ada data
-
                         </td>
-
                     </tr>
-
                 @endforelse
-
             </tbody>
-
         </table>
-
     </div>
-
     <div class="mt-4">
         {{ $anggota->links() }}
     </div>
