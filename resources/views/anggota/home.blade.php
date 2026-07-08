@@ -80,16 +80,19 @@
 
         function deleteData(id){
             Swal.fire({
-                title: 'Hapus data?',
-                text: 'Data yang dihapus tidak dapat dikembalikan',
+                title:'Hapus anggota?',
+                text:'Data anggota ini akan dihapus permanen.',
                 icon:'warning',
                 showCancelButton:true,
                 confirmButtonText:'Ya, Hapus',
                 cancelButtonText:'Batal',
                 confirmButtonColor:'#dc2626'
-            }).then((result) => {
+            }).then((result)=>{
                 if(result.isConfirmed){
-                    document.getElementById(`delete-${id}`).submit();
+                    const form = document.getElementById('deleteForm');
+                    form.action = '/anggota/delete/' + id;
+                    form.submit();
+                
                 }
             });
         }

@@ -119,4 +119,8 @@ new class extends Component {
     <div class="mt-4">
         {{ $kategori->links() }}
     </div>
+    <form id="deleteForm" method="POST" class="hidden">
+        @csrf
+        @method('DELETE')
+    </form>
 </div>

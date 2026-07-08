@@ -297,7 +297,7 @@ new class extends Component
                         <button onclick="rememberBook({{ $selectedBook->id }}); openEditModal(this)" data-id="{{ $selectedBook->id }}" data-kode="{{ $selectedBook->kode_buku }}" data-judul="{{ $selectedBook->judul_buku }}" data-penerbit="{{ $selectedBook->penerbit }}" data-penulis="{{ $selectedBook->penulis }}" data-isbn="{{ $selectedBook->isbn }}" data-tahun="{{ $selectedBook->tahun_terbit }}" data-total="{{ $selectedBook->jumlah_total }}" data-tersedia="{{ $selectedBook->jumlah_tersedia }}" data-kategori="{{ $selectedBook->kategori_id }}" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-lg">
                             Edit Buku
                         </button>
-                        <button onclick="deleteBook({{$selectedBook->id}})" class="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg">
+                        <button onclick="deleteData({{$selectedBook->id}})" class="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg">
                             Hapus Buku
                         </button>
                     </div>
@@ -314,4 +314,8 @@ new class extends Component
             </div>
         </div>
     </div>
+    <form id="deleteForm" method="POST" class="hidden">
+        @csrf
+        @method('DELETE')
+    </form>
 </div>

@@ -45,6 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/kategori/delete/{id}', [KategoriController::class, 'destroy'])->name('kategori.delete');
 
     Route::post('/buku', [BukuController::class, 'store'])->name('buku.store');
-    Route::put('/buku/update/{buku}', [BukuController::class, 'update'])->name('buku.update');
-    Route::delete('/buku/delete/{buku}', [BukuController::class, 'destroy'])->name('buku.destroy');
+    Route::put('/buku/update/{id}', [BukuController::class, 'update'])->name('buku.update');
+    Route::delete('/buku/delete/{id}', [BukuController::class, 'destroy'])->name('buku.destroy');
 });

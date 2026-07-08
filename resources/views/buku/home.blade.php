@@ -20,15 +20,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        document.addEventListener('livewire:init', () => {
-            const id = localStorage.getItem('selectedBook');
-            if (!id) return;
-
-            setTimeout(() => {
-                const btn = document.querySelector(`[data-book="${id}"]`);
-                if (btn) btn.click();
-            }, 100);
-        });
         function openTambahModal(){
             const modal = document.getElementById('tambahModal');
             modal.classList.remove('hidden');
@@ -85,11 +76,11 @@
             });
         }
 
-        function deleteBook(id)
+        function deleteData(id)
         {
             Swal.fire({
                 title:'Hapus Buku?',
-                text:'Data buku akan dihapus permanen.',
+                text:'Data buku ini akan dihapus permanen.',
                 icon:'warning',
                 showCancelButton:true,
                 confirmButtonText:'Ya, Hapus',
@@ -97,7 +88,10 @@
                 confirmButtonColor:'#dc2626'
             }).then((result)=>{
                 if(result.isConfirmed){
-                    document.getElementById('delete-'+id).submit();
+                    const form = document.getElementById('deleteForm');
+                    form.action = '/buku/delete/' + id;
+                    form.submit();
+                
                 }
             });
         }
@@ -106,12 +100,6 @@
             localStorage.setItem('selectedBook', id);
         }
     </script>
-        
-    @if(session('selectedBook'))
-    <script>
-        localStorage.setItem('selectedBook', "{{ session('selectedBook') }}");
-    </script>
-    @endif
 </div>
 
 @include('buku.modal-tambah')

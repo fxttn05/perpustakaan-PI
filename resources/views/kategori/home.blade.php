@@ -98,18 +98,22 @@
             });
         }
 
-        function deleteData(id){
+        function deleteData(id)
+        {
             Swal.fire({
-                title: 'Hapus data?',
-                text: 'Data yang dihapus tidak dapat dikembalikan',
+                title:'Hapus kategori?',
+                text:'Data kategori ini akan dihapus permanen.',
                 icon:'warning',
                 showCancelButton:true,
                 confirmButtonText:'Ya, Hapus',
                 cancelButtonText:'Batal',
                 confirmButtonColor:'#dc2626'
-            }).then((result) => {
+            }).then((result)=>{
                 if(result.isConfirmed){
-                    document.getElementById(`delete-${id}`).submit();
+                    const form = document.getElementById('deleteForm');
+                    form.action = '/kategori/delete/' + id;
+                    form.submit();
+                
                 }
             });
         }

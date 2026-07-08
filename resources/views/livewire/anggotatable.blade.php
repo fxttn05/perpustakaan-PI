@@ -151,4 +151,8 @@ new class extends Component
     <div class="mt-4">
         {{ $anggota->links() }}
     </div>
+    <form id="deleteForm" method="POST" class="hidden">
+        @csrf
+        @method('DELETE')
+    </form>
 </div>
