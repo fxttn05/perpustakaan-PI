@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Buku extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'kode_buku',
+        'judul_buku',
+        'penulis',
+        'penerbit',
+        'isbn',
+        'tahun_terbit',
+        'jumlah_total',
+        'jumlah_tersedia',
+        'status',
+        'kategori_id'
+    ];
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 }

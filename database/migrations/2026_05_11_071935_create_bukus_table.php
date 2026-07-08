@@ -16,13 +16,14 @@ return new class extends Migration
             $table->string('kode_buku')->unique();
             $table->string('judul_buku');
             $table->string('penerbit');
-            $table->string('pengarang');
+            $table->string('penulis');
             $table->string('isbn')->nullable();
             $table->year('tahun_terbit');
             $table->integer('jumlah_total')->default(0);
             $table->integer('jumlah_tersedia')->default(0);
             $table->enum('status', ['Tersedia','Dipinjam','Tidak Aktif'])->default('Tersedia');
             $table->foreignId('kategori_id')->constrained('kategoris')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->timestamps();
         });
     }
 

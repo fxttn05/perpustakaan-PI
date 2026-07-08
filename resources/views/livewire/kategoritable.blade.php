@@ -40,7 +40,7 @@ new class extends Component {
     {
         $query = Kategori::query();
         if ($this->search) {
-            $query->where('nama_kategori','like',"%{$this->search}%");
+            $query->where('nama_kategori', 'like', "%{$this->search}%");
         }
 
         if ($this->sortField) {
@@ -110,6 +110,6 @@ new class extends Component {
         </table>
     </div>
     <div class="mt-4">
-        {{ $anggota->links() }}
+        {{ $kategori->links() }}
     </div>
 </div>
