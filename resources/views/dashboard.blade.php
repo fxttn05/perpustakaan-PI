@@ -23,7 +23,7 @@
                             Total Buku
                         </p>
                         <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            63
+                            {{ $totalBuku }}
                         </h2>
                     </div>
 
@@ -47,7 +47,7 @@
                         </p>
 
                         <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            23
+                            {{ $totalAnggota }}
                         </h2>
                     </div>
 
@@ -74,7 +74,7 @@
                         </p>
 
                         <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            4
+                            {{ $bukuDipinjam }}
                         </h2>
                     </div>
 
@@ -101,7 +101,7 @@
                         </p>
 
                         <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            Rp30.560
+                            Rp {{ number_format($totalDenda,0,',','.') }}
                         </h2>
                     </div>
 
@@ -119,24 +119,136 @@
 
         </div>
 
-        <!-- Charts -->
+        <div class="grid grid-cols-3 gap-4 mt-8">
+            <a href="{{ route('anggota') }}" class="bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-4 text-center font-semibold shadow">
+                Anggota
+            </a>
+        
+            <a href="{{ route('buku') }}" class="bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-4 text-center font-semibold shadow">
+                Buku
+            </a>
+        
+            <a href="{{ route('peminjaman') }}" class="bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-4 text-center font-semibold shadow">
+                Peminjaman
+            </a>
+        </div>
+
         <div class="mt-8 grid grid-cols-1 gap-6 xl:grid-cols-2">
+            <div class="rounded-xl bg-white shadow p-5">
 
-            <!-- Line Chart -->
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-
-                <h2 class="mb-5 text-lg font-semibold text-slate-700">
-                    Statistik Peminjaman Buku
+                <h2 class="font-bold text-lg mb-4">
+                Riwayat Peminjaman
                 </h2>
 
-                <canvas id="loanChart"></canvas>
+                <table class="w-full text-sm">
+                
+                <thead class="bg-slate-100">
+                
+                <tr>
+                <th class="py-2">Tanggal</th>
+                <th>Buku</th>
+                <th>Anggota</th>
+                <th>Status</th>
+                </tr>
+
+                </thead>
+
+                <tbody>
+                
+                @forelse($riwayatPinjam as $item)
+                
+                <tr class="border-t">
+                
+                <td>{{ $item->tanggal_pinjam->format('d M Y') }}</td>
+                
+                <td>{{ $item->buku->judul_buku }}</td>
+                
+                <td>{{ $item->peminjaman->anggota->nama_lengkap }}</td>
+                
+                <td>{{ $item->status }}</td>
+                
+                </tr>
+
+                @empty
+
+                <tr>
+                
+                <td colspan="4" class="text-center py-6">
+                Belum ada data.
+                </td>
+
+                </tr>
+
+                @endforelse
+
+                </tbody>
+
+                </table>
+
             </div>
+
+            <div class="rounded-xl bg-white shadow p-5">
+
+                <h2 class="font-bold text-lg mb-4">
+                Riwayat Peminjaman
+                </h2>
+
+                <table class="w-full text-sm">
+                
+                <thead class="bg-slate-100">
+                
+                <tr>
+                <th class="py-2">Tanggal</th>
+                <th>Buku</th>
+                <th>Anggota</th>
+                <th>Status</th>
+                </tr>
+
+                </thead>
+
+                <tbody>
+                
+                @forelse($riwayatKembali as $item)
+                
+                <tr class="border-t">
+                
+                <td>{{ $item->updated_at->format('d M Y') }}</td>
+                
+                <td>{{ $item->buku->judul_buku }}</td>
+                
+                <td>{{ $item->peminjaman->anggota->nama_lengkap }}</td>
+                
+                <td>{{ $item->status }}</td>
+                
+                </tr>
+
+                @empty
+
+                <tr>
+                
+                <td colspan="4" class="text-center py-6">
+                Belum ada data.
+                </td>
+
+                </tr>
+
+                @endforelse
+
+                </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="mt-8 grid grid-cols-1 gap-6 xl:grid-cols-2">
 
             <!-- Doughnut Chart -->
             <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
 
                 <h2 class="mb-5 text-lg font-semibold text-slate-700">
-                    Distribusi Kategori Buku
+                    Distribusi Kategori Buku yang Dipinjam
                 </h2>
 
                 <canvas id="categoryChart"></canvas>
@@ -149,50 +261,41 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        // Grafik Peminjaman
-        new Chart(document.getElementById('loanChart'), {
-            type: 'line',
-            data: {
-                labels: [
-                    'Jan',
-                    'Feb',
-                    'Mar',
-                    'Apr',
-                    'Mei',
-                    'Jun'
-                ],
-                datasets: [{
-                    label: 'Jumlah Peminjaman',
-                    data: [0, 0, 0, 0, 0, 0],
-                    borderWidth: 3,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true
-            }
-        });
-
-        // Grafik Kategori Buku
-        new Chart(document.getElementById('categoryChart'), {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    'Buku Paket',
-                    'Laporan PKL',
-                    'Bacaan Bebas'
-                ],
-                datasets: [{
-                    data: [0, 0, 0],
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true
-            }
-        });
-
+        
+    const kategori = @json($kategori);
+        
+    new Chart(document.getElementById('categoryChart'),{
+    
+    type:'doughnut',
+    
+    data:{
+    
+    labels:kategori.map(e=>e.nama_kategori),
+    
+    datasets:[{
+    
+    data:kategori.map(e=>e.total)
+    
+    }]
+    
+    },
+    
+    options:{
+    
+    responsive:true,
+    
+    plugins:{
+    
+    legend:{
+    position:'bottom'
+    }
+    
+    }
+    
+    }
+    
+    });
+    
     </script>
 </div>
 @endsection
