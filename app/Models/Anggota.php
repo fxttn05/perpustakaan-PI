@@ -20,4 +20,9 @@ class Anggota extends Model
         'status',
         'keterangan'
     ];
+
+    public function peminjamans()
+    {
+        return $this->hasMany(Peminjaman::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anggota;
+use App\Models\Buku;
 use App\Models\Kategori;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -31,7 +32,17 @@ class Controller extends BaseController
     }
 
     public function Peminjaman(){
-        return view('peminjaman.home');
+        $anggota=Anggota::orderBy('nama_lengkap')->get();
+
+        $buku=Buku::where('jumlah_tersedia','>',0)
+        ->orderBy('judul_buku')
+        ->get();
+        
+        return view('peminjaman.home',compact(
+        'anggota',
+        'buku'
+        ));
+        return view('peminjaman.home', compact('anggota','buku'));
     }
 
     public function Pengembalian(){

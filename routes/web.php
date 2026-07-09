@@ -5,6 +5,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PeminjamanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +46,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/kategori/delete/{id}', [KategoriController::class, 'destroy'])->name('kategori.delete');
 
     Route::post('/buku', [BukuController::class, 'store'])->name('buku.store');
-    Route::put('/buku/update/{id}', [BukuController::class, 'update'])->name('buku.update');
-    Route::delete('/buku/delete/{id}', [BukuController::class, 'destroy'])->name('buku.destroy');
+    Route::put('/buku/update/{buku}', [BukuController::class, 'update'])->name('buku.update');
+    Route::delete('/buku/delete/{buku}', [BukuController::class, 'destroy'])->name('buku.destroy');
+
+    Route::post('/peminjaman', [PeminjamanController::class,'store'])->name('peminjaman.store');
+    Route::put('/peminjaman/{peminjaman}/kembali-semua',[PeminjamanController::class,'kembaliSemua'])->name('peminjaman.kembaliSemua');
+    Route::put('/peminjaman/perpanjang/{detail}', [PeminjamanController::class,'perpanjang'])->name('peminjaman.perpanjang');
+    Route::put('/peminjaman/kembali/{detail}', [PeminjamanController::class,'kembali'])->name('peminjaman.kembali');
 });

@@ -1,198 +1,334 @@
 @extends('layout')
+
 @section('content')
+
 <div class="min-h-screen">
     <div class="bg-slate-100 py-6 px-10">
 
-        <!-- Header -->
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-slate-800">
-                Peminjaman
-            </h1>
-            <p class="text-slate-500">
-                Selamat datang di sistem perpustakaan
-            </p>
+            <h1 class="text-3xl font-bold text-slate-800">Peminjaman</h1>
+            <p class="text-slate-500">Kelola data peminjaman buku perpustakaan.</p>
         </div>
 
-        <!-- Cards -->
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <!-- Total Buku -->
-            <div class="rounded-2xl bg-white p-6 shadow-sm border border-slate-200">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-slate-500">
-                            Total Buku
-                        </p>
-                        <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            0
-                        </h2>
-                    </div>
-
-                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-blue-100">
-                        <svg class="h-7 w-7 text-blue-600" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 6.253v13m0-13C10.832 5.483 9.246 5 7.5 5A4.5 4.5 0 003 9.5V19a4 4 0 014-4h10a4 4 0 014 4V9.5A4.5 4.5 0 0016.5 5c-1.746 0-3.332.483-4.5 1.253z" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Total Anggota -->
-            <div class="rounded-2xl bg-white p-6 shadow-sm border border-slate-200">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-slate-500">
-                            Total Anggota
-                        </p>
-
-                        <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            0
-                        </h2>
-                    </div>
-
-                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-100">
-                        <svg class="h-7 w-7 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M17 20h5V4H2v16h5m10 0v-4a4 4 0 00-8 0v4m8 0H9m8 0h-8m4-8a4 4 0 100-8 4 4 0 000 8z" />
-                        </svg>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Buku Dipinjam -->
-            <div class="rounded-2xl bg-white p-6 shadow-sm border border-slate-200">
-
-                <div class="flex items-center justify-between">
-
-                    <div>
-                        <p class="text-sm text-slate-500">
-                            Buku Dipinjam
-                        </p>
-
-                        <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            0
-                        </h2>
-                    </div>
-
-                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-amber-100">
-                        <svg class="h-7 w-7 text-amber-600" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M8 7V3m8 4V3m-9 8h10m-5 5h.01M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Total Denda -->
-            <div class="rounded-2xl bg-white p-6 shadow-sm border border-slate-200">
-
-                <div class="flex items-center justify-between">
-
-                    <div>
-                        <p class="text-sm text-slate-500">
-                            Total Denda
-                        </p>
-
-                        <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            Rp0
-                        </h2>
-                    </div>
-
-                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-red-100">
-                        <svg class="h-7 w-7 text-red-600" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 8c-1.657 0-3 1.343-3 3v1h6v-1c0-1.657-1.343-3-3-3zm0 0V5m0 14v-3" />
-                        </svg>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Charts -->
-        <div class="mt-8 grid grid-cols-1 gap-6 xl:grid-cols-2">
-
-            <!-- Line Chart -->
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-
-                <h2 class="mb-5 text-lg font-semibold text-slate-700">
-                    Statistik Peminjaman Buku
-                </h2>
-
-                <canvas id="loanChart"></canvas>
-            </div>
-
-            <!-- Doughnut Chart -->
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-
-                <h2 class="mb-5 text-lg font-semibold text-slate-700">
-                    Distribusi Kategori Buku
-                </h2>
-
-                <canvas id="categoryChart"></canvas>
-            </div>
-
-        </div>
+        <livewire:peminjamantable />
+        @include('peminjaman.modal-tambah')
 
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        // Grafik Peminjaman
-        new Chart(document.getElementById('loanChart'), {
-            type: 'line',
-            data: {
-                labels: [
-                    'Jan',
-                    'Feb',
-                    'Mar',
-                    'Apr',
-                    'Mei',
-                    'Jun'
-                ],
-                datasets: [{
-                    label: 'Jumlah Peminjaman',
-                    data: [0, 0, 0, 0, 0, 0],
-                    borderWidth: 3,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true
-            }
-        });
+        function openTambahModal(){
+            const modal = document.getElementById('tambahModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
 
-        // Grafik Kategori Buku
-        new Chart(document.getElementById('categoryChart'), {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    'Buku Paket',
-                    'Laporan PKL',
-                    'Bacaan Bebas'
-                ],
-                datasets: [{
-                    data: [0, 0, 0],
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true
+        function closeTambahModal()
+        {
+            const modal = document.getElementById('tambahModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        function confirmSave(formId){
+            Swal.fire({
+            title:'Simpan data?',
+            icon:'question',
+            showCancelButton:true,
+            confirmButtonText:'Simpan',
+            cancelButtonText:'Batal'
+            }).then(result=>{
+                if(result.isConfirmed){
+                    document.getElementById(formId).submit();
+                }
+            });
+        }
+        function confirmKembaliSemua(url){
+            Swal.fire({
+                title:'Kembalikan semua buku?',
+                text:'Semua buku pada transaksi ini akan dikembalikan.',
+                icon:'question',
+                showCancelButton:true,
+                confirmButtonText:'Ya',
+                cancelButtonText:'Batal'
+            }).then(result=>{
+                if(result.isConfirmed){
+                    let form=document.createElement('form');
+                    form.method='POST';
+                    form.action=url;
+                    form.innerHTML='@csrf @method("PUT")';
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            });
+        }
+
+        function confirmPerpanjang(url){
+            Swal.fire({
+                title:'Perpanjang periode?',
+                text:'Periode akan bertambah 1 minggu.',
+                icon:'question',
+                showCancelButton:true,
+                confirmButtonText:'Perpanjang',
+                cancelButtonText:'Batal'
+                }).then(result=>{
+                    if(result.isConfirmed){
+                    let form=document.createElement('form');
+                    form.method='POST';
+                    form.action=url;
+                    form.innerHTML='@csrf @method("PUT")';
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            });
+        }
+
+        function confirmKembali(url){       
+            Swal.fire({
+                title:'Kembalikan buku?',
+                icon:'question',
+                showCancelButton:true,
+                confirmButtonText:'Ya',
+                cancelButtonText:'Batal'
+                }).then(result=>{
+                    if(result.isConfirmed){
+                    let form=document.createElement('form');
+                    form.method='POST';
+                    form.action=url;
+                    form.innerHTML='@csrf @method("PUT")';
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function(){
+            const anggota = @json($anggota);
+            const buku = @json($buku);
+            const bookContainer=document.getElementById('bookContainer');
+            const btnTambah=document.getElementById('btnTambahBuku');
+    
+            function initAnggotaAutocomplete(){
+                const input=document.getElementById('anggota_search');
+                const hidden=document.getElementById('anggota_id');
+                const result=document.getElementById('anggota_result');
+                input.addEventListener('input',function(){
+                
+                    const keyword=this.value.toLowerCase();
+                
+                    result.innerHTML='';
+                
+                    if(keyword.length==0){
+                        result.classList.add('hidden');
+                        return;
+                    }
+                
+                    const data=anggota.filter(item=>
+                
+                        item.kode_anggota.toLowerCase().includes(keyword) ||
+                
+                        item.nama_lengkap.toLowerCase().includes(keyword) ||
+                
+                        (item.kelas??'').toLowerCase().includes(keyword)
+                
+                    );
+                
+                    if(data.length==0){
+                    
+                        result.classList.add('hidden');
+                        hidden.value='';
+                        return;
+                    
+                    }
+                
+                    data.forEach(item=>{
+                    
+                        const div=document.createElement('div');
+                    
+                        div.className='px-3 py-2 hover:bg-blue-50 cursor-pointer border-b';
+                    
+                        div.innerHTML=`
+                            <div class="font-medium">${item.nama_lengkap} - ${item.kode_anggota}</div>
+                            <div class="text-xs text-slate-500">${item.jabatan} - ${item.kelas ?? ' '}</div>
+                        `;
+                    
+                        div.onclick=function(){
+                        
+                            input.value=`${item.kode_anggota} - ${item.nama_lengkap} - ${item.jabatan} - ${item.kelas ?? ' '}`;
+                        
+                            hidden.value=item.id;
+                        
+                            result.classList.add('hidden');
+                        
+                        };
+                    
+                        result.appendChild(div);
+                    
+                    });
+                
+                    result.classList.remove('hidden');
+                
+                });
+            
+                document.addEventListener('click',function(e){
+                
+                    if(!result.contains(e.target) && e.target!=input){
+                    
+                        result.classList.add('hidden');
+                    
+                    }
+                
+                });
+            
             }
+    
+            function initBookAutocomplete(row){
+            
+                const input=row.querySelector('.buku-search');
+                const hidden=row.querySelector('.buku-id');
+                const result=row.querySelector('.buku-result');
+            
+                input.addEventListener('input',function(){
+                
+                    const keyword=this.value.toLowerCase();
+                
+                    result.innerHTML='';
+                
+                    if(keyword.length==0){
+                    
+                        result.classList.add('hidden');
+                        hidden.value='';
+                        return;
+                    
+                    }
+                
+                    const selected=[
+                
+                        ...document.querySelectorAll('.buku-id')
+                
+                    ].map(i=>i.value);
+                
+                    const data=buku.filter(item=>{
+                    
+                        if(selected.includes(String(item.id))) return false;
+                    
+                        return item.kode_buku.toLowerCase().includes(keyword)
+                    
+                        ||
+                    
+                        item.judul_buku.toLowerCase().includes(keyword);
+                    
+                    });
+                
+                    if(data.length==0){
+                    
+                        result.classList.add('hidden');
+                        hidden.value='';
+                        return;
+                    
+                    }
+                
+                    data.forEach(item=>{
+                    
+                        const div=document.createElement('div');
+                    
+                        div.className='px-3 py-2 hover:bg-blue-50 cursor-pointer border-b';
+                    
+                        div.innerHTML=`
+                            <div class="font-medium">${item.judul_buku}</div>
+                            <div class="text-sm text-slate-700">${item.kode_buku} - Tersedia ${item.jumlah_tersedia} buku</div>
+                        `;
+                    
+                        div.onclick=function(){
+                        
+                            input.value=`${item.kode_buku} - ${item.judul_buku}`;
+                        
+                            hidden.value=item.id;
+                        
+                            result.classList.add('hidden');
+                        
+                        };
+                    
+                        result.appendChild(div);
+                    
+                    });
+                
+                    result.classList.remove('hidden');
+                
+                });
+            
+                document.addEventListener('click',function(e){
+                
+                    if(!result.contains(e.target) && e.target!=input){
+                    
+                        result.classList.add('hidden');
+                    
+                    }
+                
+                });
+            
+            }
+    
+            initAnggotaAutocomplete();
+    
+            document.querySelectorAll('.book-row').forEach(row=>{
+            
+                initBookAutocomplete(row);
+            
+            });
+    
+            btnTambah.addEventListener('click',function(){
+            
+                if(document.querySelectorAll('.book-row').length>=6){
+                
+                    Swal.fire({
+                        icon:'warning',
+                        title:'Maksimal 6 buku.'
+                    });
+                
+                    return;
+                
+                }
+            
+                const row=document.querySelector('.book-row').cloneNode(true);
+            
+                row.querySelector('.buku-search').value='';
+                row.querySelector('.buku-id').value='';
+                row.querySelector('[name="periode[]"]').value=1;
+            
+                row.querySelector('.buku-result').innerHTML='';
+            
+                row.querySelector('.buku-result').classList.add('hidden');
+            
+                bookContainer.appendChild(row);
+            
+                initBookAutocomplete(row);
+            
+            });
+    
+            document.addEventListener('click',function(e){
+            
+                if(e.target.classList.contains('hapusBaris')){
+                
+                    if(document.querySelectorAll('.book-row').length==1){
+                    
+                        Swal.fire({
+                            icon:'warning',
+                            title:'Minimal harus ada 1 buku.'
+                        });
+                    
+                        return;
+                    
+                    }
+                
+                    e.target.closest('.book-row').remove();
+                
+                }
+            
+            });
         });
 
     </script>
 </div>
+
+
+
 @endsection

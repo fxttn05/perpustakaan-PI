@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pengembalians', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('detail_peminjaman_id')->constrained('detail_peminjamans')->cascadeOnUpdate()->cascadeOnDelete();
+        $table->foreignId('detail_peminjaman_id')->constrained('detail_peminjamen')->cascadeOnUpdate()->cascadeOnDelete();
         $table->date('tanggal_kembali');
         $table->integer('keterlambatan_hari')->default(0);
         $table->enum('status', ['Tepat Waktu', 'Terlambat']);
