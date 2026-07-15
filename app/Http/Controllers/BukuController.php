@@ -39,6 +39,7 @@ class BukuController extends Controller
             'jumlah_total'      => $request->jumlah_total,
             'jumlah_tersedia'   => $request->jumlah_tersedia,
             'status'            => 'Tersedia',
+            'keterangan'        => $request->keterangan,
             'created_at'        => now(),
             'updated_at'        => now(),
         ]);
@@ -67,6 +68,7 @@ class BukuController extends Controller
             'jumlah_total'      => $request->jumlah_total,
             'jumlah_tersedia'   => $request->jumlah_tersedia,
             'status'            => $request->jumlah_tersedia < $request->jumlah_total ? 'Dipinjam' : 'Tersedia',
+            'keterangan'        => $request->keterangan,
             'updated_at'        => now()
         ]);
         return back()->with('remember_book', $buku->kode_buku)->with('success', 'Data buku berhasil diperbarui.');

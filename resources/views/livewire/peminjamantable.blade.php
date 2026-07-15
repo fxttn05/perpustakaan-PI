@@ -182,56 +182,60 @@ new class extends Component {
                 
             </div>
         
-            <div class="grid grid-cols-2 gap-x-10 gap-y-4 p-6 text-sm">
+            <div class="grid grid-cols-6 gap-x-10 gap-y-4 p-6 text-sm">
             
-                <div>
+                <div class="col-span-3">
                     <label class="font-semibold text-slate-500">ID Peminjaman</label>
                     <p>{{ $selected->id_peminjaman }}</p>
                 </div>
             
-                <div>
+                <div class="col-span-3">
                     <label class="font-semibold text-slate-500">Tanggal Pinjam</label>
                     <p>{{ Carbon::parse($selected->tanggal_pinjam)->format('d M Y') }}</p>
                 </div>
             
-                <div>
+                <div class="col-span-3">
                     <label class="font-semibold text-slate-500">Kode Anggota</label>
                     <p>{{ $selected->anggota->kode_anggota }}</p>
                 </div>
             
-                <div>
+                <div class="col-span-3">
                     <label class="font-semibold text-slate-500">Nama Anggota</label>
                     <p>{{ $selected->anggota->nama_lengkap }}</p>
                 </div>
             
-                <div>
+                <div class="col-span-3">
                     <label class="font-semibold text-slate-500">Kelas</label>
                     <p>{{ $selected->anggota->kelas ?? '-' }}</p>
                 </div>
             
-                <div>
+                <div class="col-span-3">
                     <label class="font-semibold text-slate-500">Jabatan</label>
                     <p>{{ $selected->anggota->jabatan }}</p>
                 </div>
             
-                <div>
+                <div class="col-span-3">
                     <label class="font-semibold text-slate-500">Status</label>
                 
                     @if($selected->status=='Dipinjam')
-                        <span class="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">
+                        <p class="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">
                             Dipinjam
-                        </span>
+                        </p>
                     @else
-                        <span class="inline-block bg-slate-200 text-slate-700 px-3 py-1 rounded-full text-xs">
+                        <p class="inline-block bg-slate-200 text-slate-700 px-3 py-1 rounded-full text-xs">
                             Selesai
-                        </span>
+                        </p>
                     @endif
                     
                 </div>
             
-                <div>
+                <div class="col-span-3">
                     <label class="font-semibold text-slate-500">Jumlah Buku</label>
                     <p>{{ $selected->details->count() }} Buku</p>
+                </div>
+                <div class="col-span-6">
+                    <label class="text-sm text-slate-500">Keterangan</label>
+                    <p class="font-semibold mt-1">{{ $selected->keterangan ?: '-'}}</p>
                 </div>
             </div>
         
@@ -321,7 +325,7 @@ new class extends Component {
             </div>
             @else
             <div class="h-full flex flex-col items-center justify-center min-h-175">
-                <div class="text-7xl mb-5">
+                <div class="text-4xl mb-5">
                     📚
                 </div>
                 <h2 class="text-2xl font-semibold">
