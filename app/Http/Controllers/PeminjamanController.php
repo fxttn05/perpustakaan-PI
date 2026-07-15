@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
-use App\Models\Peminjaman;
-use App\Models\DetailPeminjaman;
 use App\Models\Buku;
+use App\Models\Denda;
+use App\Models\DetailPeminjaman;
+use App\Models\Peminjaman;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PeminjamanController extends Controller
 {
@@ -95,12 +96,27 @@ class PeminjamanController extends Controller
             $peminjaman->update([
                 'status'=>'Selesai'
             ]);
-    
+            $hariTelat=Carbon::parse($detail->tanggal_jatuh_tempo)->diffInDays(now(),false);
+
+            if($hariTelat>0){
+
+                $periodeTelat=max(1,ceil($hariTelat/7));
+
+                Denda::updateOrCreate(
+                [
+                    'detail_peminjaman_id'=>$detail->id
+                ],
+                [
+                    'periode_terlambat'=>$periodeTelat,
+                    'nominal'=>$periodeTelat*5000,
+                    'status'=>'Belum Lunas'
+                ]);
+
+            }
+
             DB::commit();
     
-            return redirect()
-                ->route('peminjaman',['selected'=>$peminjaman->id])
-                ->with('success','Seluruh buku berhasil dikembalikan.');
+            return redirect()->route('peminjaman',['selected'=>$peminjaman->id])->with('success','Seluruh buku berhasil dikembalikan.');
     
         }catch(\Exception $e){
     
@@ -149,6 +165,24 @@ class PeminjamanController extends Controller
             $pinjam->update([
                 'status'=>'Selesai'
             ]);
+        }
+        $hariTelat = \Carbon\Carbon::parse($detail->tanggal_jatuh_tempo)->diffInDays(now(), false);
+        if($hariTelat > 0){
+            $periodeTelat = (int) ceil($hariTelat / 7);
+            $nominal = $periodeTelat * 5000;
+            $denda = Denda::firstOrNew([
+                'detail_peminjaman_id'=>$detail->id
+            ]);
+            
+            $denda->periode_terlambat = $periodeTelat;
+            $denda->nominal = $nominal;
+            
+            if(!$denda->exists){
+                $denda->status='Belum Lunas';
+            }
+            
+            $denda->save();
+
         }
 
         return back()->with('success','Buku berhasil dikembalikan.');

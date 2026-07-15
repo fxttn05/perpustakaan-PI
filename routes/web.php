@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DendaController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PeminjamanController;
@@ -53,4 +54,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/peminjaman/{peminjaman}/kembali-semua',[PeminjamanController::class,'kembaliSemua'])->name('peminjaman.kembaliSemua');
     Route::put('/peminjaman/perpanjang/{detail}', [PeminjamanController::class,'perpanjang'])->name('peminjaman.perpanjang');
     Route::put('/peminjaman/kembali/{detail}', [PeminjamanController::class,'kembali'])->name('peminjaman.kembali');
+    
+    Route::put('/denda/{denda}/bayar',[DendaController::class,'bayar'])->name('denda.bayar');
 });

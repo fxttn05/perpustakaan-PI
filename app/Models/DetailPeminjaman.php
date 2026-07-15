@@ -46,4 +46,11 @@ class DetailPeminjaman extends Model
     {
         return now()->greaterThan($this->tanggal_jatuh_tempo) && $this->status == 'Dipinjam';
     }
+
+    public function denda()
+    {
+        return $this->hasOne(Denda::class);
+    }
+
+    
 }

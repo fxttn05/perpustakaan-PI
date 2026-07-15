@@ -61,20 +61,20 @@
                                 Buku
                             </a>
 
+                            <a href="{{route('peminjaman')}}" aria-current="{{request()->routeIs('peminjaman') ? 'page' : 'false'}}"
+                               class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('peminjaman') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
+                                Peminjaman
+                            </a>
+
                             <a href="{{route('kategori')}}" aria-current="{{request()->routeIs('kategori') ? 'page' : 'false'}}"
                                class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('kategori') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
                                 Kategori
                             </a>
                         
-                            <a href="{{route('peminjaman')}}" aria-current="{{request()->routeIs('peminjaman') ? 'page' : 'false'}}"
-                               class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('peminjaman') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
-                                Peminjaman
-                            </a>
-                        
-                            <a href="{{route('pengembalian')}}" aria-current="{{request()->routeIs('pengembalian') ? 'page' : 'false'}}"
+                            {{-- <a href="{{route('pengembalian')}}" aria-current="{{request()->routeIs('pengembalian') ? 'page' : 'false'}}"
                                class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('pengembalian') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
                                 Pengembalian
-                            </a>
+                            </a> --}}
                         
                             <a href="{{route('denda')}}" aria-current="{{request()->routeIs('denda') ? 'page' : 'false'}}"
                                class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('denda') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
@@ -86,10 +86,10 @@
                                 Laporan
                             </a>
                         
-                            <a href="{{route('profile')}}" aria-current="{{request()->routeIs('profile') ? 'page' : 'false'}}"
+                            {{-- <a href="{{route('profile')}}" aria-current="{{request()->routeIs('profile') ? 'page' : 'false'}}"
                                class="rounded-md px-3 py-2 text-sm font-medium {{request()->routeIs('profile') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}">
                                 Profile
-                            </a>
+                            </a> --}}
                         
                         </div>
                     </div>
