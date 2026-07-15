@@ -15,6 +15,58 @@
 
         <!-- Cards -->
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <div class="rounded-2xl bg-white p-6 shadow-sm border border-slate-200">
+
+                <div class="flex items-center justify-between">
+
+                    <div>
+
+                        <p class="text-sm text-slate-500 ">
+                            Denda Belum Lunas
+                        </p>
+
+                        <h2 class="mt-2 text-3xl font-bold text-orange-600">
+                            {{ $dendaBelumLunas }}
+                        </h2>
+
+                    </div>
+
+                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-orange-100">
+
+                        💸
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="rounded-2xl bg-white p-6 shadow-sm border border-slate-200">
+
+                <div class="flex items-center justify-between">
+
+                    <div>
+
+                        <p class="text-sm text-slate-500">
+                            Total Transaksi
+                        </p>
+
+                        <h2 class="mt-2 text-3xl font-bold text-indigo-600">
+                            {{ $transaksiPinjam }}
+                        </h2>
+
+                    </div>
+
+                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-indigo-100">
+
+                        📑
+
+                    </div>
+
+                </div>
+
+            </div>
+
             <!-- Total Buku -->
             <div class="rounded-2xl bg-white p-6 shadow-sm border border-slate-200">
                 <div class="flex items-center justify-between">
@@ -23,7 +75,7 @@
                             Total Buku
                         </p>
                         <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            0
+                            {{ number_format($totalBuku) }}
                         </h2>
                     </div>
 
@@ -47,7 +99,7 @@
                         </p>
 
                         <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            0
+                            {{ number_format($totalAnggota) }}
                         </h2>
                     </div>
 
@@ -74,7 +126,7 @@
                         </p>
 
                         <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            0
+                            {{ number_format($bukuDipinjam) }}
                         </h2>
                     </div>
 
@@ -101,7 +153,8 @@
                         </p>
 
                         <h2 class="mt-2 text-3xl font-bold text-slate-800">
-                            Rp0
+                            Rp
+                            {{ number_format($totalDenda,0,',','.') }}
                         </h2>
                     </div>
 
@@ -117,6 +170,290 @@
                 </div>
             </div>
 
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 mt-8">
+            <div class="bg-white rounded-xl shadow">
+                <div class="border-b px-5 py-4">
+                    <h2 class="font-semibold text-lg">
+                        Anggota Teraktif
+                    </h2>
+                </div>
+
+                <table class="w-full text-sm">
+
+                    <thead class="bg-slate-100">
+
+                        <tr>
+
+                            <th class="px-4 py-3 text-left">
+                                Kode
+                            </th>
+
+                            <th class="px-4 py-3 text-left">
+                                Nama
+                            </th>
+
+                            <th class="px-4 py-3">
+                                Total
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach($anggotaTerbaru as $item)
+
+                            <tr class="border-t">
+
+                                <td class="px-4 py-3">
+                                    {{ $item->kode_anggota }}
+                                </td>
+
+                                <td class="px-4 py-3">
+                                    {{ $item->nama_lengkap }}
+                                </td>
+
+                                <td class="px-4 py-3 text-center font-bold">
+                                    {{ $item->total_pinjam }}
+                                </td>
+
+                            </tr>
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+
+            </div>
+            <div class="bg-white rounded-xl shadow">
+
+                <div class="border-b px-5 py-4">
+
+                    <h2 class="font-semibold text-lg">
+
+                        Buku Paling Dipinjam
+
+                    </h2>
+
+                </div>
+
+                <table class="w-full text-sm">
+
+                    <thead class="bg-slate-100">
+
+                        <tr>
+
+                            <th class="px-4 py-3 text-left">
+                                Kode
+                            </th>
+
+                            <th class="px-4 py-3 text-left">
+                                Judul
+                            </th>
+
+                            <th class="px-4 py-3">
+                                Dipinjam
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach($bukuPopuler as $item)
+
+                            <tr class="border-t">
+
+                                <td class="px-4 py-3">
+
+                                    {{ $item->kode_buku }}
+
+                                </td>
+
+                                <td class="px-4 py-3">
+
+                                    {{ $item->judul_buku }}
+
+                                </td>
+
+                                <td class="px-4 py-3 text-center font-bold">
+
+                                    {{ $item->details_count }}
+
+                                </td>
+
+                            </tr>
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 mt-6">
+            <div class="bg-white rounded-xl shadow">
+
+                <div class="border-b px-5 py-4">
+
+                    <h2 class="font-semibold text-lg">
+
+                        Peminjaman Terbaru
+
+                    </h2>
+
+                </div>
+
+                <table class="w-full text-sm">
+
+                    <thead class="bg-slate-100">
+
+                        <tr>
+
+                            <th class="px-4 py-3">
+                                ID
+                            </th>
+
+                            <th class="px-4 py-3">
+                                Nama
+                            </th>
+
+                            <th class="px-4 py-3">
+                                Tanggal
+                            </th>
+
+                            <th class="px-4 py-3">
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach($peminjamanTerbaru as $item)
+
+                            <tr class="border-t">
+
+                                <td class="px-4 py-3">
+
+                                    {{ $item->id_peminjaman }}
+
+                                </td>
+
+                                <td class="px-4 py-3">
+
+                                    {{ $item->anggota->nama_lengkap }}
+
+                                </td>
+
+                                <td class="px-4 py-3">
+
+                                    {{ \Carbon\Carbon::parse($item->tanggal_pinjam)->format('d/m/Y') }}
+
+                                </td>
+
+                                <td class="px-4 py-3">
+
+                                    {{ $item->status }}
+
+                                </td>
+
+                            </tr>
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+
+            </div>
+            <div class="bg-white rounded-xl shadow">
+
+                <div class="border-b px-5 py-4">
+
+                    <h2 class="font-semibold text-lg">
+
+                        Denda Terbesar
+
+                    </h2>
+
+                </div>
+
+                <table class="w-full text-sm">
+
+                    <thead class="bg-slate-100">
+
+                        <tr>
+
+                            <th class="px-4 py-3">
+                                Nama
+                            </th>
+
+                            <th class="px-4 py-3">
+                                Buku
+                            </th>
+
+                            <th class="px-4 py-3">
+                                Nominal
+                            </th>
+
+                            <th class="px-4 py-3">
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach($dendaTerbaru as $item)
+
+                            <tr class="border-t">
+
+                                <td class="px-4 py-3">
+
+                                    {{ $item->detail->peminjaman->anggota->nama_lengkap }}
+
+                                </td>
+
+                                <td class="px-4 py-3">
+
+                                    {{ $item->detail->buku->judul_buku }}
+
+                                </td>
+
+                                <td class="px-4 py-3 font-bold text-red-600">
+
+                                    Rp
+                                    {{ number_format($item->nominal,0,',','.') }}
+
+                                </td>
+
+                                <td class="px-4 py-3">
+
+                                    {{ $item->status }}
+
+                                </td>
+
+                            </tr>
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+
+            </div>
         </div>
 
         <!-- Charts -->

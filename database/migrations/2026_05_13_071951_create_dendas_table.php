@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('hari_terlambat');
             $table->integer('periode_terlambat');
             $table->integer('nominal');
-            $table->boolean('lunas')->default(false);
+            $table->enum('status', ['Lunas', 'Belum Lunas']);
             $table->date('tanggal_bayar')->nullable();
             $table->text('keterangan')->nullable();
             $table->timestamps();
