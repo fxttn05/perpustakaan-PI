@@ -18,8 +18,10 @@
             </div>
 
             <div class="border-t p-5 text-right">
-                <button type="button" onclick="confirmSave('formBayar')" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg">
-                    Simpan
+                <button
+                    type="submit"
+                    class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg">
+                    Konfirmasi Bayar
                 </button>
             </div>
 

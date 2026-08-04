@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('denda:generate')->daily();
+        $schedule->command('app:generate-denda')->daily();
     }
 
     /**

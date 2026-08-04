@@ -13,4 +13,14 @@ class Denda extends Model
     {
         return $this->belongsTo(DetailPeminjaman::class,'detail_peminjaman_id');
     }
+
+    protected $fillable = [
+        'detail_peminjaman_id',
+        'hari_terlambat',
+        'periode_terlambat',
+        'nominal',
+        'status',
+        'tanggal_bayar',
+        'keterangan'
+    ];
 }

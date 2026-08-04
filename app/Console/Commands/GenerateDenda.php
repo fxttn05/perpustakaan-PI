@@ -48,6 +48,7 @@ class GenerateDenda extends Command
                     'detail_peminjaman_id'=>$detail->id
                 ],
                 [
+                    'hari_terlambat' => $hariTelat,
                     'periode_terlambat'=>$periodeTelat,
                     'nominal'=>$nominal,
                     'status'=>'Belum Lunas'
