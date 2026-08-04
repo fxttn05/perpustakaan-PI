@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/anggota', [Controller::class, 'Anggota'])->name('anggota');
     Route::get('/buku', [Controller::class, 'Buku'])->name('buku');
     Route::get('/kategori', [Controller::class, 'Kategori'])->name('kategori');
-    Route::get('/peminjaman', [Controller::class, 'Peminjaman'])->name('peminjaman');
+    Route::get('/transaksi', [Controller::class, 'Peminjaman'])->name('peminjaman');
     Route::get('/pengembalian', [Controller::class, 'Pengembalian'])->name('pengembalian');
     Route::get('/denda', [Controller::class, 'Denda'])->name('denda');
     Route::get('/laporan', [Controller::class, 'Laporan'])->name('laporan');
@@ -50,10 +50,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/buku/update/{buku}', [BukuController::class, 'update'])->name('buku.update');
     Route::delete('/buku/delete/{buku}', [BukuController::class, 'destroy'])->name('buku.destroy');
 
-    Route::post('/peminjaman', [PeminjamanController::class,'store'])->name('peminjaman.store');
-    Route::put('/peminjaman/{peminjaman}/kembali-semua',[PeminjamanController::class,'kembaliSemua'])->name('peminjaman.kembaliSemua');
-    Route::put('/peminjaman/perpanjang/{detail}', [PeminjamanController::class,'perpanjang'])->name('peminjaman.perpanjang');
-    Route::put('/peminjaman/kembali/{detail}', [PeminjamanController::class,'kembali'])->name('peminjaman.kembali');
+    Route::post('/transaksi', [PeminjamanController::class,'store'])->name('peminjaman.store');
+    Route::put('/transaksi/{peminjaman}/kembali-semua',[PeminjamanController::class,'kembaliSemua'])->name('peminjaman.kembaliSemua');
+    Route::put('/transaksi/perpanjang/{detail}', [PeminjamanController::class,'perpanjang'])->name('peminjaman.perpanjang');
+    Route::put('/transaksi/kembali/{detail}', [PeminjamanController::class,'kembali'])->name('peminjaman.kembali');
     
     Route::put('/denda/{denda}/bayar',[DendaController::class,'bayar'])->name('denda.bayar');
 });

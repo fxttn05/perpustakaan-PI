@@ -129,7 +129,7 @@
             </a>
         
             <a href="{{ route('peminjaman') }}" class="bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-4 text-center font-semibold shadow">
-                Peminjaman
+                Transaksi
             </a>
         </div>
 

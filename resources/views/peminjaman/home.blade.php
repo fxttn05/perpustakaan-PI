@@ -6,8 +6,8 @@
     <div class="bg-slate-100 py-6 px-10">
 
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-slate-800">Peminjaman</h1>
-            <p class="text-slate-500">Kelola data peminjaman buku perpustakaan.</p>
+            <h1 class="text-3xl font-bold text-slate-800">Transaksi</h1>
+            <p class="text-slate-500">Kelola data transaksi peminjaman dan pengembalian buku perpustakaan.</p>
         </div>
 
         <livewire:peminjamantable />
