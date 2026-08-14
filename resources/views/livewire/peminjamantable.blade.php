@@ -118,7 +118,7 @@ new class extends Component {
                             @endif
                         </th>
                         <th class="px-4 py-3">Peminjam</th>
-                        <th class="px-4 py-3">Buku</th>
+                        <th class="px-4 py-3">Jumlah</th>
                         <th class="px-4 py-3"> </th>
                     </tr>
                 </thead>

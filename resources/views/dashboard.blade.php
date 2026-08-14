@@ -190,7 +190,7 @@
             <div class="rounded-xl bg-white shadow p-5">
 
                 <h2 class="font-bold text-lg mb-4">
-                Riwayat Peminjaman
+                Riwayat Pengembalian
                 </h2>
 
                 <table class="w-full text-sm">

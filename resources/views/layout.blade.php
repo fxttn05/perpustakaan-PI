@@ -19,9 +19,12 @@
                     Perpustakaan SMK Taruna Bhakti
                 </div>
                 <div class="mr-3">
-                    <button type="button" class="text-white font-semibold bg-red-700 px-3 py-1 rounded-lg">
-                      Logout
-                    </button>                  
+                    <form action="{{route('logout')}}">
+                        @csrf
+                        <button class="text-white font-semibold bg-red-700 px-3 py-1 rounded-lg cursor-pointer">
+                          Logout
+                        </button>                  
+                    </form>
                 </div>
             </div>
         </div>
