@@ -118,7 +118,7 @@
 
                 </form>
 
-                <!-- Register -->
+                {{-- <!-- Register -->
                 <p class="mt-6 text-center text-slate-200">
                     Belum punya akun?
                     <a
@@ -126,7 +126,7 @@
                         class="font-semibold text-white underline hover:text-blue-200">
                         Register
                     </a>
-                </p>
+                </p> --}}
 
             </div>
 

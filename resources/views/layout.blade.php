@@ -19,7 +19,7 @@
                     Perpustakaan SMK Taruna Bhakti
                 </div>
                 <div class="mr-3">
-                    <form action="{{route('logout')}}">
+                    <form action="{{route('logout')}}" method="POST">
                         @csrf
                         <button class="text-white font-semibold bg-red-700 px-3 py-1 rounded-lg cursor-pointer">
                           Logout

@@ -22,7 +22,7 @@ class Controller extends BaseController
         $totalAnggota = Anggota::count();
         $bukuDipinjam = DetailPeminjaman::whereIn('status',['Dipinjam','Terlambat'])->count();
 
-        $totalDenda = 0;
+        $totalDenda = Denda::sum('nominal');
         $riwayatPinjam = DetailPeminjaman::with([
             'buku',
             'peminjaman.anggota'
